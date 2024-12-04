@@ -7,7 +7,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
-    <title>Roue de Noms</title>
+    <title>🎲 La Roue du Hasard 🎲</title>
     <style>
         body {
             font-family: "Roboto", Arial, sans-serif;
@@ -22,7 +22,7 @@
         }
         .container {
             text-align: center;
-            transform: scale(1.8);
+            transform: scale(1.9);
         }
         .name-list-wrapper {
             width: 370px;
@@ -33,6 +33,7 @@
             border: 0px solid #003f7a;
             border-radius: 50%;
             background-color: white;
+            box-shadow: inset rgb(0 0 0 / 40%) 0px 0px 8px 7px;
         }
         .name-list {
             width : 100%;
@@ -52,7 +53,7 @@
         }
         .name-list li.highlight {
             /* font-size: 22px; */
-            transform: scale(1.3);
+            transform: scale(1.5);
             font-weight: bold;
             color: #e41d4b;
         }
@@ -84,24 +85,34 @@
             transform: scaleX(-1);
         }
         body {
-            background: linear-gradient(90deg, rgb(107, 15, 37) 0%, rgba(0,63,122,1) 30%, rgba(0,63,122,1) 70%, rgba(107, 15, 37) 100%);
+            background: radial-gradient( rgba(0,63,122,1) 40%, rgba(107, 15, 37) 100%);
             /* background-size: 150% 150%; */
+        }
+
+        .svgtitle{
+            transform: scale(1.5);
         }
 
     </style>
 </head>
 <body>
     <div class="container">
-        <div class="text-light fs-4 text-uppercase">La roue du hasard</div>
-        <div class="name-list-wrapper shadow-lg mb-5" id="nameListWrapper">
+        <svg class="svgtitle" height="60">
+            <path id="titlepath" d="M 0 50 C 100 0, 200 0, 300 50" stroke="transparent" fill="transparent"/>
+            <text fill="white" class="fs-4">
+                <textPath startOffset="50%" dominant-baseline="middle" text-anchor="middle" xlink:href="#titlepath">🎲 La Roue du Hasard 🎲</textPath>
+            </text>
+        </svg>
+        <!-- <div class="text-light fs-4 text-uppercase">La roue du hasard</div>-->
+        <div class="name-list-wrapper mb-5" id="nameListWrapper">
             <div class="arrow arrow-left">➤</div>
             <div class="arrow arrow-right">➤</div>
             <ul class="name-list" id="nameList">
                 <!-- Les noms défileront ici -->
             </ul>
         </div>
-        <button id="spinButton" class="btn btn-success mx-2">Lancer la roue</button>
-        <button id="resetButton" class="btn btn-outline-light mx-2">Réinitialiser</button>
+        <button id="spinButton" class="btn btn-danger mx-2">🎡 Lancer la roue</button>
+        <button id="resetButton" class="btn btn-outline-light mx-2">🔄 Réinitialiser</button>
     </div>
 
     <script>
@@ -291,9 +302,11 @@
                                     fausseJoie = false;
 
                                     confetti({
-                                        particleCount: 100,
-                                        spread: 70,
-                                        origin: { y: 0.6 }
+                                        particleCount: 200,
+                                        spread: 160,
+                                        origin: { y: 0.6 },
+                                        gravity: 0.5,
+                                        ticks: 250
                                     });
 
                                 }, 
@@ -318,9 +331,11 @@
                             spinButton.disabled = false;
 
                             confetti({
-                                particleCount: 100,
-                                spread: 70,
-                                origin: { y: 0.6 }
+                                particleCount: 200,
+                                spread: 160,
+                                origin: { y: 0.6 },
+                                gravity: 0.5,
+                                ticks: 250
                             });
                         }, 
                         3200
